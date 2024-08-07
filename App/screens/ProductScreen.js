@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const ProductScreen = ({ route, navigation }) => {
   const { product } = route.params;

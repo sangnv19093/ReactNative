@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Profile</Text>
+      <Text style={styles.title}>Quản lý</Text>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('AddProduct')}>
         <Text style={styles.buttonText}>Add Product</Text>
       </TouchableOpacity>
@@ -21,7 +21,6 @@ const ProfileScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
     backgroundColor: '#1e1e1e',
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     marginBottom: 16,
+    marginTop: 20
   },
   button: {
     marginTop: 20,

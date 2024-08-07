@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const AddProductScreen = ({ navigation }) => {
   const [name, setName] = useState('');

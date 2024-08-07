@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const FavoriteScreen = ({ navigation }) => {
   const [favorites, setFavorites] = useState([]);
@@ -46,6 +46,7 @@ const FavoriteScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+        <Text style={{fontSize: 30, fontWeight:'bold', color:'#FFFFFF', textAlign:'center', marginBottom: 20}}>Yêu thích</Text>
       <FlatList
         data={favorites}
         renderItem={renderItem}

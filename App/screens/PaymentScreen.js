@@ -1,8 +1,42 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
+const API_URL = 'http://10.24.36.230:3000'; // Cập nhật URL API của bạn
+
 const PaymentScreen = ({ navigation }) => {
+
+  const handlePayment = () => {
+    // Gửi yêu cầu thanh toán tới server
+    fetch(`${API_URL}/payment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        method: 'credit_card',
+        amount: 4.20,
+        cardNumber: '3897 8923 6745 4638',
+        cardName: 'Robert Evans',
+        cardExpiry: '02/30',
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.text().then(text => { throw new Error(text) });
+      }
+      return response.json();
+    })
+    .then(data => {
+      Alert.alert('Success', 'Payment was successful!');
+      navigation.goBack(); // Quay lại màn hình trước đó sau khi thanh toán thành công
+    })
+    .catch(error => {
+      console.error(error);
+      Alert.alert('Error', `There was an error processing your payment: ${error.message}`);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
@@ -39,7 +73,7 @@ const PaymentScreen = ({ navigation }) => {
 
       <Text style={styles.price}>Price: $4.20</Text>
 
-      <TouchableOpacity style={styles.payButton}>
+      <TouchableOpacity style={styles.payButton} onPress={handlePayment}>
         <Text style={styles.payButtonText}>Pay from Credit Card</Text>
       </TouchableOpacity>
     </View>

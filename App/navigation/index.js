@@ -15,6 +15,7 @@ import EditProductScreen from '../screens/EditProductScreen';
 import SelectProductScreen from '../screens/SelectProductScreen';
 import DeleteProductScreen from '../screens/DeleteProductScreen';
 import PaymentScreen from '../screens/PaymentScreen';
+import ContactScreen from '../screens/ContactScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -142,6 +143,7 @@ const App = () => {
       </Tab.Screen>
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Favorites" component={FavoriteScreen} />
+      <Tab.Screen name="Contact" component={ContactScreen} />
     </Tab.Navigator>
   );
 
@@ -196,6 +198,11 @@ const App = () => {
         <Stack.Screen
           name="Payment"
           component={PaymentScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Contact"
+          component={ContactScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

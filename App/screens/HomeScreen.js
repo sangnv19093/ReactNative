@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Image, A
 import { FontAwesome } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const HomeScreen = ({ navigation }) => {
   const [coffeeData, setCoffeeData] = useState([]);

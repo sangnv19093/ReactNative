@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Image, Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const SelectProductScreen = ({ route, navigation }) => {
   const { action } = route.params;

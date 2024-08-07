@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
-const API_URL = 'http://192.168.92.106:3000';
+const API_URL = 'http://10.24.36.230:3000';
 
 const DeleteProductScreen = ({ route, navigation }) => {
   const { product } = route.params;
@@ -11,9 +11,23 @@ const DeleteProductScreen = ({ route, navigation }) => {
       method: 'DELETE',
     })
       .then(() => {
+        // Delete product from cart
+        fetch(`${API_URL}/cart/${product.id}`, {
+          method: 'DELETE',
+        }).catch(error => console.error('Error deleting product from cart:', error));
+
+        // Delete product from favorites
+        fetch(`${API_URL}/favorites/${product.id}`, {
+          method: 'DELETE',
+        }).catch(error => console.error('Error deleting product from favorites:', error));
+
+        Alert.alert('Success', 'Product deleted successfully!');
         navigation.goBack(); // Quay lại màn hình trước đó sau khi xóa thành công
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        Alert.alert('Error', `There was an error deleting the product: ${error.message}`);
+      });
   };
 
   return (
